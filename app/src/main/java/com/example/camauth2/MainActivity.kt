@@ -4,10 +4,12 @@ package com.example.camauth2
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.ExifInterface
 import android.net.Uri
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -46,6 +48,8 @@ class MainActivity : AppCompatActivity() {
         outputDirectory = getOutputDirectory()
 
         cameraExecutor = Executors.newSingleThreadExecutor()
+
+        authPicButton.setOnClickListener{lauchAuthicatePicture()}
     }
 
     override fun onRequestPermissionsResult(
@@ -165,5 +169,10 @@ class MainActivity : AppCompatActivity() {
         exitInterface.saveAttributes()
 
         Toast.makeText(baseContext, "Wrote metadata", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun lauchAuthicatePicture(){
+        var intent = Intent(applicationContext, AuthenticateImage::class.java)
+        startActivity(intent)
     }
 }

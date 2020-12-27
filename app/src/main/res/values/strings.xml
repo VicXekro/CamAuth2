@@ -4,4 +4,6 @@
     <string name="generate_key">Generate Keys</string>
     <string name="print_pub_key">Display Public Key</string>
     <string name="welcome">Welcome to VeriCam, Please Generate Your Private and Public key first</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
