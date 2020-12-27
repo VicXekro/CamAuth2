@@ -1,2 +1,2 @@
-## Embrionic version of the VeriCam
+## Embryonic version of the VeriCam
 Allows to take a picture and proof its authenticity
