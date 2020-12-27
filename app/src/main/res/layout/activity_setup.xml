@@ -6,4 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".SetupActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="384dp"
+            android:layout_height="72dp"
+            android:text="@string/welcome" />
+
+        <Button
+            android:id="@+id/generateKeyButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/generate_key" />
+
+        <Button
+            android:id="@+id/printPublicKeyButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Print Public Key" />
+
+        <Button
+            android:id="@+id/launchCamButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Camera" />
+
+        <TextView
+            android:id="@+id/pubKeyTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+
+        <Button
+            android:id="@+id/clearKeyButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Clear Keys" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

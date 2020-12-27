@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.Manifest
 import android.content.pm.PackageManager
+import android.media.ExifInterface
 import android.net.Uri
 import android.util.Log
 import android.widget.Toast
@@ -71,7 +72,7 @@ class MainActivity : AppCompatActivity() {
         val photoFile = File(
             outputDirectory,
             SimpleDateFormat(FILENAME_FORMAT, Locale.US
-            ).format(System.currentTimeMillis()) + ".jpg")
+            ).format(System.currentTimeMillis()) + ".jpeg")
 
         // Create output options object which contains file + metadata
         val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
@@ -89,6 +90,7 @@ class MainActivity : AppCompatActivity() {
                     val msg = "Photo capture succeeded: $savedUri"
                     Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                     Log.d(TAG, msg)
+                    writeImgMetadata(photoFile)
                 }
             })
     }
@@ -148,9 +150,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val TAG = "CameraXBasic"
+        private const val TAG = "CamAuth2"
         private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
         private const val REQUEST_CODE_PERMISSIONS = 10
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
+    }
+
+    //function to get location, data time and write them as metadata
+    private fun writeImgMetadata(photoFile: File){
+        val path:String = photoFile.absolutePath;
+        val exitInterface: ExifInterface = ExifInterface(path)
+        var altitude = 2.5
+        exitInterface.setAttribute("GPSAltitute", altitude.toString());
+        exitInterface.saveAttributes()
+
+        Toast.makeText(baseContext, "Wrote metadata", Toast.LENGTH_SHORT).show()
     }
 }
